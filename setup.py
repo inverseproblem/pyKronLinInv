@@ -11,6 +11,6 @@ setup(name='kronlininv',
       license='GPL3',
       packages=['kronlininv'],
       install_requires=[
-          'numpy','scipy','numba',
+          'numpy','scipy','numba','collections'
       ],
       zip_safe=False)
