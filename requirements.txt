@@ -1,6 +1,5 @@
 numpy
 scipy
-sys
 numba
 collections
 sphinx 
