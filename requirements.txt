@@ -3,3 +3,5 @@ scipy
 sys
 numba
 collections
+sphinx 
+sphinx_rtd_theme
