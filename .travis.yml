@@ -11,6 +11,7 @@ script:
   
 jobs:
   include:
+    name: Build and deploy docs
     script: cd docs && make html
     deploy:
       provider: pages
