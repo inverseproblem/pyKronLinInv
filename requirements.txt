@@ -1,7 +1,6 @@
 numpy
 scipy
 numba
-collections
 sphinx 
 sphinx_rtd_theme
 pytest
