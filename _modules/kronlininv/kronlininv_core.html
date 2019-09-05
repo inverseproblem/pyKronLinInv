@@ -25,6 +25,7 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -56,6 +57,10 @@
 
           
             
+            
+              <div class="version">
+                0.1
+              </div>
             
           
 
@@ -251,7 +256,7 @@
 <span class="c1">##########################################################</span>
 
 <div class="viewcode-block" id="posteriormean"><a class="viewcode-back" href="../../index.html#kronlininv.posteriormean">[docs]</a><span class="nd">@jit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#(nopython=True,parallel=True)</span>
-<span class="k">def</span> <span class="nf">posteriormean</span><span class="p">(</span><span class="n">factkli</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span> <span class="n">mprior</span><span class="p">,</span> <span class="n">dobs</span> <span class="p">)</span> <span class="p">:</span>
+<span class="k">def</span> <span class="nf">posteriormean</span><span class="p">(</span> <span class="n">factkli</span><span class="p">,</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">mprior</span><span class="p">,</span><span class="n">dobs</span> <span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the posterior mean model.</span>
 
@@ -333,7 +338,6 @@
 
 <div class="viewcode-block" id="blockpostcov"><a class="viewcode-back" href="../../index.html#kronlininv.blockpostcov">[docs]</a><span class="nd">@jit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#(nopython=True,parallel=True)</span>
 <span class="k">def</span> <span class="nf">blockpostcov</span><span class="p">(</span><span class="n">factkli</span><span class="p">,</span> <span class="n">astart</span><span class="p">,</span><span class="n">aend</span><span class="p">,</span><span class="n">bstart</span><span class="p">,</span><span class="n">bend</span> <span class="p">)</span> <span class="p">:</span>
-
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute a block of the posterior covariance defined by the min/max indices astart/aend (rows), bstart/bend (columns).</span>
 
