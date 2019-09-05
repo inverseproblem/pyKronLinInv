@@ -2,7 +2,7 @@ language: python
 python:
   - "3.6"      # current default Python on Travis CI
   - "3.7"
-  #- "nightly"  # nightly build
+  - "nightly"  # nightly build
 # command to install dependencies
 install:
   - pip install -r requirements.txt
@@ -18,7 +18,7 @@ jobs:
          provider: pages # deploy on github pages
          skip_cleanup: true
          github_token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
-          on:
+         on:
             branch: master
          local_dir: build/html
-  
+
