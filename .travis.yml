@@ -10,15 +10,14 @@ script:
   - pytest
   
 jobs:
-   include:   
-    deploy:
-      script:
-      - cd docs && make html
+  - cd docs && make html
+  deploy:
       provider: pages
       skip-cleanup: true
       keep-history: true
       on:
         branch: master
+        pythonr: 3.7
       github-token: $SPHINX_DOCS_token
       local-dir: docs/build/html
       committer-from-gh: true
