@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/inverseproblem/pyKronLinInv.svg?branch=master)](https://travis-ci.com/inverseproblem/pyKronLinInv)
 [![Docs](https://img.shields.io/badge/docs-blue.svg)](https://inverseproblem.github.io/pyKronLinInv/)
 
-
+ 
 Kronecker-product-based linear inversion of geophysical (or other kinds of) data under Gaussian and separability assumptions. 
 The code computes the posterior mean model and the posterior covariance matrix (or subsets of it) in an efficient manner (parallel algorithm) taking into account 3-D correlations both in the model parameters and in the observed data.
 
