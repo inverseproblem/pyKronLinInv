@@ -9,14 +9,16 @@ install:
 script:
   - pytest
  
-jobs:
-  include:
-      name: Deploy to GitHub Pages
-      script: cd docs/ && make html
-      deploy:
-         provider: pages # deploy on github pages
-         skip_cleanup: true
-         on:
-            branch: master
-         local_dir: build/html
+ 
+after_success:
+  - cd docs && make html
 
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  on:
+    branch: master
+  github-token: $GITHUB_TOKEN
+  local-dir: docs/build/html
+  committer-from-gh: true
