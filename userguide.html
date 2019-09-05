@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide &mdash; KronLinInv 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API, list of functions" href="apilist.html" />
+    <link rel="prev" title="kronlininv’s documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KronLinInv
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#theoretical-background">Theoretical background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-example">2D example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-test-problem">Creating a test problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solving-the-2d-problem">Solving the 2D problem</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3D example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Creating a test problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solving-the-3d-problem">Solving the 3D problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apilist.html">API, list of functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KronLinInv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="theoretical-background">
+<h2>Theoretical background<a class="headerlink" href="#theoretical-background" title="Permalink to this headline">¶</a></h2>
+<p>KronLinInv solves the <em>linear inverse problem</em> with Gaussian uncertainties
+represented by the following objective function</p>
+<div class="math notranslate nohighlight">
+\[S( \mathbf{m}) = \frac{1}{2} ( \mathbf{G} \mathbf{m} - \mathbf{d}_{\sf{obs}} )^{\sf{T}} \mathbf{C}^{-1}_{\rm{D}} ( \mathbf{G} \mathbf{m} - \mathbf{d}_{\sf{obs}} ) + \frac{1}{2} ( \mathbf{m} - \mathbf{m}_{\sf{prior}} )^{\sf{T}} \mathbf{C}^{-1}_{\rm{M}} ( \mathbf{m} - \mathbf{m}_{\sf{prior}} )\]</div>
+<p>under the following separability conditions (for a 3-way decomposition):</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{C}_{\rm{M}} = \mathbf{C}_{\rm{M}}^{\rm{x}} \otimes
+\mathbf{C}_{\rm{M}}^{\rm{y}} \otimes \mathbf{C}_{\rm{M}}^{\rm{z}}
+, \quad
+\mathbf{C}_{\rm{D}} = \mathbf{C}_{\rm{D}}^{\rm{x}} \otimes
+\mathbf{C}_{\rm{D}}^{\rm{y}} \otimes \mathbf{C}_{\rm{D}}^{\rm{z}}
+\quad \textrm{ and } \quad
+\mathbf{G} = \mathbf{G}^{\rm{x}} \otimes \mathbf{G}^{\rm{y}} \otimes \mathbf{G}^{\rm{z}} \, .\]</div>
+<p>From the above, the posterior covariance matrix is given by</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\widetilde{C}}_{\rm{M}} =  \left( \mathbf{G}^{\sf{T}} \,
+\mathbf{C}^{-1}_{\rm{D}} \, \mathbf{G} + \mathbf{C}^{-1}_{\rm{M}} \right)^{-1}\]</div>
+<p>and the center of posterior gaussian is</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\widetilde{m}}
+= \mathbf{m}_{\rm{prior}}+ \mathbf{\widetilde{C}}_{\rm{M}} \, \mathbf{G}^{\sf{T}} \, \mathbf{C}^{-1}_{\rm{D}} \left(\mathbf{d}_{\rm{obs}} - \mathbf{G} \mathbf{m}_{\rm{prior}} \right) \, .\]</div>
+<p>KronLinInv solves the inverse problem in an efficient manner, with a very low memory imprint, suitable for large problems where many model parameters and observations are involved.</p>
+<p>The paper describes how to obtain the solution to the above problem as shown hereafter. First the following matrices are computed</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{U}_1 \mathbf{\Lambda}_1  \mathbf{U}_1^{-1}
+= \mathbf{C}_{\rm{M}}^{\rm{x}} (\mathbf{G}^{\rm{x}})^{\sf{T}}
+(\mathbf{C}_{\rm{D}}^{\rm{x}})^{-1} \mathbf{G}^{\rm{x}}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{U}_2 \mathbf{\Lambda}_2  \mathbf{U}_2^{-1}
+=  \mathbf{C}_{\rm{M}}^{\rm{y}} (\mathbf{G}^{\rm{y}})^{\sf{T}}
+(\mathbf{C}_{\rm{D}}^{\rm{y}})^{-1} \mathbf{G}^{\rm{y}}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{U}_3 \mathbf{\Lambda}_3  \mathbf{U}_3^{-1}
+= \mathbf{C}_{\rm{M}}^{\rm{z}} (\mathbf{G}^{\rm{z}})^{\sf{T}}
+(\mathbf{C}_{\rm{D}}^{\rm{z}})^{-1} \mathbf{G}^{\rm{z}}  \, .\]</div>
+<p>The posterior covariance is then expressed as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\widetilde{C}}_{\rm{M}} =
+\left(
+\mathbf{U}_1 \otimes \mathbf{U}_2 \otimes \mathbf{U}_3
+\right)
+\big(
+\mathbf{I} + \mathbf{\Lambda}_1 \! \otimes \! \mathbf{\Lambda}_2 \! \otimes \! \mathbf{\Lambda}_3
+\big)^{-1}
+\big(
+\mathbf{U}_1^{-1}  \mathbf{C}_{\rm{M}}^{\rm{x}} \otimes
+\mathbf{U}_2^{-1} \mathbf{C}_{\rm{M}}^{\rm{y}} \otimes
+\mathbf{U}_3^{-1} \mathbf{C}_{\rm{M}}^{\rm{z}}
+\big) \, .\]</div>
+<p>and the posterior mean model as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{\widetilde{m}} =
+\mathbf{m}_{\rm{prior}} +
+\Big[ \!
+\left(
+\mathbf{U}_1 \otimes \mathbf{U}_2 \otimes \mathbf{U}_3
+\right)
+\big(
+\mathbf{I} + \mathbf{\Lambda}_1\!  \otimes \! \mathbf{\Lambda}_2 \!  \otimes\!  \mathbf{\Lambda}_3
+\big)^{-1} \\
+\times \Big(
+\left( \mathbf{U}_1^{-1}  \mathbf{C}_{\rm{M}}^{\rm{x}} (\mathbf{G}^{\rm{x}})^{\sf{T}} (\mathbf{C}_{\rm{D}}^{\rm{x}})^{-1} \right) \!    \otimes
+\left( \mathbf{U}_2^{-1} \mathbf{C}_{\rm{M}}^{\rm{y}}  (\mathbf{G}^{\rm{y}})^{\sf{T}} (\mathbf{C}_{\rm{D}}^{\rm{y}})^{-1}  \right)   \!
+\\
+\otimes  \left( \mathbf{U}_3^{-1} \mathbf{C}_{\rm{M}}^{\rm{z}} (\mathbf{G}^{\rm{z}})^{\sf{T}} (\mathbf{C}_{\rm{D}}^{\rm{z}})^{-1} \right)
+\Big)
+\Big] \\
+\times \Big( \mathbf{d}_{\rm{obs}} - \big( \mathbf{G}^{\rm{x}} \otimes \mathbf{G}^{\rm{y}} \otimes \mathbf{G}^{\rm{z}} \big) \, \mathbf{m}_{\rm{prior}} \Big) \, .\end{split}\]</div>
+<p>These last two formulae are those used by the KronLinInv algorithm.</p>
+<p>Several function are exported by the module KronLinInv:</p>
+<ul class="simple">
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>: Computes the factors necessary to solve the inverse problem</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">posteriormean()</span></code>: Computes the posterior mean model using the previously computed “factors” with <code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>.</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">blockpostcov()</span></code>: Computes a block (or all) of the posterior covariance using the previously computed “factors” with <code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>.</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">bandpostcov()</span></code>: NOT YET IMPLEMENTED! Computes a band of the posterior covariance the previously computed “factors” with <code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="usage-examples">
+<h2>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<p>The input needed is represented by the set of three covariance matrices of the model parameters, the three covariances of the observed data, the three forward model operators, the observed data (a vector) and the prior model (a vector).
+The <strong>first</strong> thing to compute is always the set of “factors” using the function <code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>.
+Finally, the posterior mean (see <code class="xref py py-func docutils literal notranslate"><span class="pre">posteriormean()</span></code>) and/or covariance (or part of it) (see <code class="xref py py-func docutils literal notranslate"><span class="pre">blockpostcov()</span></code>) can be computed.</p>
+<div class="section" id="d-example">
+<h3>2D example<a class="headerlink" href="#d-example" title="Permalink to this headline">¶</a></h3>
+<p>An example of how to use the code for 2D problems is shown in the following. Notice that the code is written for a 3D problem, however, by setting some of the matrices as identity matrices with size of 1 <span class="math notranslate nohighlight">\(\times\)</span> 1, a 2D problem can be solved without much overhead.</p>
+<div class="section" id="creating-a-test-problem">
+<h4>Creating a test problem<a class="headerlink" href="#creating-a-test-problem" title="Permalink to this headline">¶</a></h4>
+<p>First, we create some input data to simulate a real problem.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 2D problem, so set nx = 1</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">nxobs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">nyobs</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">nzobs</span> <span class="o">=</span> <span class="mi">24</span>
+</pre></div>
+</div>
+<p>We then construct some covariance matrices and a forward operator. The “first” covariance matrices for model parameters
+(<span class="math notranslate nohighlight">\(\mathbf{C}_{\rm{M}}^{\rm{x}} \, , \mathbf{C}_{\rm{M}}^{\rm{y}} \, , \mathbf{C}_{\rm{M}}^{\rm{z}}\)</span>) and observed data (<span class="math notranslate nohighlight">\(\mathbf{C}_{\rm{D}}^{\rm{x}} \, , \mathbf{C}_{\rm{D}}^{\rm{y}} \, , \mathbf{C}_{\rm{D}}^{\rm{z}}\)</span>) are simply an identity matrix of shape 1 <span class="math notranslate nohighlight">\(\times\)</span> 1, since it is a 2D problem.
+The forward relation (forward model) is created from three operators (<span class="math notranslate nohighlight">\(\mathbf{G}^{\rm{x}} \, , \mathbf{G}^{\rm{y}} \, , \mathbf{G}^{\rm{z}}\)</span>). Remark: the function <code class="xref py py-func docutils literal notranslate"><span class="pre">mkCovSTAT()</span></code> used in the following example is <em>not</em> part of KronLinInv.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mkCovSTAT</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">corrlength</span><span class="p">,</span><span class="n">kind</span><span class="p">)</span> <span class="p">:</span>
+   <span class="c1">#</span>
+   <span class="c1">#   Stationaly covariance model</span>
+   <span class="c1">#</span>
+
+   <span class="k">def</span> <span class="nf">cgaussian</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">corrlength</span><span class="p">):</span>
+       <span class="k">if</span> <span class="n">dist</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">==</span><span class="mf">0.0</span><span class="p">:</span>
+           <span class="k">return</span> <span class="mf">1.0</span>
+       <span class="k">else</span><span class="p">:</span>
+           <span class="k">assert</span><span class="p">(</span><span class="n">corrlength</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">)</span>
+           <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dist</span><span class="o">/</span><span class="n">corrlength</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+   <span class="k">def</span> <span class="nf">cexponential</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">corrlength</span><span class="p">):</span>
+       <span class="k">if</span> <span class="n">dist</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">==</span><span class="mf">0.0</span><span class="p">:</span>
+           <span class="k">return</span> <span class="mf">1.0</span>
+       <span class="k">else</span><span class="p">:</span>
+           <span class="k">assert</span><span class="p">(</span><span class="n">corrlength</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">)</span>
+           <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dist</span><span class="o">/</span><span class="n">corrlength</span><span class="p">))</span>
+
+   <span class="n">npts</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="o">*</span><span class="n">nz</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">)])</span>
+   <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">)])</span>
+   <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nz</span><span class="p">)])</span>
+   <span class="n">covmat_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span>
+   <span class="n">covmat_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span><span class="n">ny</span><span class="p">))</span>
+   <span class="n">covmat_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nz</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span>
+
+   <span class="k">if</span> <span class="n">kind</span><span class="o">==</span><span class="s2">&quot;gaussian&quot;</span> <span class="p">:</span>
+       <span class="n">calccovfun</span> <span class="o">=</span> <span class="n">cgaussian</span>
+   <span class="k">elif</span> <span class="n">kind</span><span class="o">==</span><span class="s2">&quot;exponential&quot;</span> <span class="p">:</span>
+       <span class="n">calccovfun</span> <span class="o">=</span> <span class="n">cexponential</span>
+   <span class="k">else</span> <span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error, no or wrong cov &#39;kind&#39; specified&quot;</span><span class="p">)</span>
+       <span class="k">raise</span> <span class="ne">ValueError</span>
+
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+       <span class="n">covmat_x</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">calccovfun</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">corrlength</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
+       <span class="n">covmat_y</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">calccovfun</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">y</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">corrlength</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nz</span><span class="p">):</span>
+       <span class="n">covmat_z</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">calccovfun</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">z</span><span class="o">-</span><span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">corrlength</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+   <span class="k">return</span> <span class="n">covmat_x</span><span class="p">,</span><span class="n">covmat_y</span><span class="p">,</span><span class="n">covmat_z</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sigmaobs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">corlenobs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">])</span>
+<span class="n">sigmam</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="n">corlenm</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="c1">## Covariance matrices</span>
+<span class="c1"># covariance on observed data</span>
+<span class="n">Cd1</span><span class="p">,</span><span class="n">Cd2</span><span class="p">,</span><span class="n">Cd3</span> <span class="o">=</span> <span class="n">mkCovSTAT</span><span class="p">(</span><span class="n">sigmaobs</span><span class="p">,</span><span class="n">nxobs</span><span class="p">,</span><span class="n">nyobs</span><span class="p">,</span><span class="n">nzobs</span><span class="p">,</span><span class="n">corlenobs</span><span class="p">,</span><span class="s2">&quot;gaussian&quot;</span><span class="p">)</span>
+<span class="c1"># covariance on model parameters</span>
+<span class="n">Cm1</span><span class="p">,</span><span class="n">Cm2</span><span class="p">,</span><span class="n">Cm3</span> <span class="o">=</span> <span class="n">mkCovSTAT</span><span class="p">(</span><span class="n">sigmam</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">corlenm</span><span class="p">,</span><span class="s2">&quot;gaussian&quot;</span><span class="p">)</span>
+
+<span class="c1">## Forward model operator</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nxobs</span><span class="p">,</span><span class="n">nx</span><span class="p">)</span>
+<span class="n">G2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nyobs</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span>
+<span class="n">G3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nzobs</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, a “true/reference” model, in order to compute some synthetic “observed” data and a prior model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create a reference model</span>
+<span class="n">refmod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="o">*</span><span class="n">nz</span><span class="p">)</span>
+
+<span class="c1">## Create a reference model</span>
+<span class="n">mprior</span> <span class="o">=</span> <span class="n">refmod</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1">#0.5 .* ones(nx*ny*nz)</span>
+
+<span class="c1">## Create some &quot;observed&quot; data</span>
+<span class="c1">##   (without noise because it&#39;s just a test of the algo)</span>
+<span class="n">dobs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">))</span> <span class="o">@</span> <span class="n">refmod</span>
+</pre></div>
+</div>
+<p>Now we have create a synthetic example to play with, which we can solve as shown in the following.</p>
+</div>
+<div class="section" id="solving-the-2d-problem">
+<h4>Solving the 2D problem<a class="headerlink" href="#solving-the-2d-problem" title="Permalink to this headline">¶</a></h4>
+<p>In order to solve the inverse problem using KronLinInv, we first need to compute the “factors” using the function <code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>, which takes as inputs a set of arrays representing the covariance matrices and the forward operators.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Calculate the required factors</span>
+<span class="n">klifac</span> <span class="o">=</span> <span class="n">kli</span><span class="o">.</span><span class="n">calcfactors</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">Cm1</span><span class="p">,</span><span class="n">Cm2</span><span class="p">,</span><span class="n">Cm3</span><span class="p">,</span><span class="n">Cd1</span><span class="p">,</span><span class="n">Cd2</span><span class="p">,</span><span class="n">Cd3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now the inverse problem can be solved. We first compute the posterior mean and then a subset of the posterior covariance.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## import the module</span>
+<span class="kn">import</span> <span class="nn">kronlininv</span> <span class="k">as</span> <span class="nn">kli</span>
+
+<span class="c1">## Calculate the posterior mean model</span>
+<span class="n">postm</span> <span class="o">=</span> <span class="n">kli</span><span class="o">.</span><span class="n">posteriormean</span><span class="p">(</span><span class="n">klifac</span><span class="p">,</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">mprior</span><span class="p">,</span><span class="n">dobs</span><span class="p">)</span>
+
+<span class="c1">## Calculate the posterior covariance</span>
+<span class="n">npts</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="o">*</span><span class="n">nz</span>
+<span class="n">astart</span><span class="p">,</span> <span class="n">aend</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">npts</span><span class="o">//</span><span class="mi">3</span>
+<span class="n">bstart</span><span class="p">,</span> <span class="n">bend</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">npts</span><span class="o">//</span><span class="mi">3</span>
+<span class="n">postC</span> <span class="o">=</span> <span class="n">kli</span><span class="o">.</span><span class="n">blockpostcov</span><span class="p">(</span><span class="n">klifac</span><span class="p">,</span><span class="n">astart</span><span class="p">,</span><span class="n">aend</span><span class="p">,</span><span class="n">bstart</span><span class="p">,</span><span class="n">bend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>3D example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>An example of how to use the code for 3D problems is shown in the following. It follows closely the 3D example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 2D problem, so set nx = 1</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">nxobs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">nyobs</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">nzobs</span> <span class="o">=</span> <span class="mi">24</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h4>Creating a test problem<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>We then construct some covariance matrices and a forward operator. The “first” covariance matrices for model parameters
+(<span class="math notranslate nohighlight">\(\mathbf{C}_{\rm{M}}^{\rm{x}} \, , \mathbf{C}_{\rm{M}}^{\rm{y}} \, , \mathbf{C}_{\rm{M}}^{\rm{z}}\)</span>) and observed data (<span class="math notranslate nohighlight">\(\mathbf{C}_{\rm{D}}^{\rm{x}} \, , \mathbf{C}_{\rm{D}}^{\rm{y}} \, , \mathbf{C}_{\rm{D}}^{\rm{z}}\)</span>) are simply an identity matrix of shape 1 <span class="math notranslate nohighlight">\(\times\)</span> 1, since it is a 2D problem.
+The forward relation (forward model) is created from three operators (<span class="math notranslate nohighlight">\(\mathbf{G}^{\rm{x}} \, , \mathbf{G}^{\rm{y}} \, , \mathbf{G}^{\rm{z}}\)</span>). Remark: the function <code class="xref py py-func docutils literal notranslate"><span class="pre">mkCovSTAT()</span></code> used in the following example is <em>not</em> part of KronLinInv. See the 2D example for the code of <code class="xref py py-func docutils literal notranslate"><span class="pre">mkCovSTAT()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sigmaobs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">corlenobs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">])</span>
+<span class="n">sigmam</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="n">corlenm</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])</span>
+
+<span class="c1">## Covariance matrices</span>
+<span class="c1"># covariance on observed data</span>
+<span class="n">Cd1</span><span class="p">,</span><span class="n">Cd2</span><span class="p">,</span><span class="n">Cd3</span> <span class="o">=</span> <span class="n">mkCovSTAT</span><span class="p">(</span><span class="n">sigmaobs</span><span class="p">,</span><span class="n">nxobs</span><span class="p">,</span><span class="n">nyobs</span><span class="p">,</span><span class="n">nzobs</span><span class="p">,</span><span class="n">corlenobs</span><span class="p">,</span><span class="s2">&quot;gaussian&quot;</span><span class="p">)</span>
+<span class="c1"># covariance on model parameters</span>
+<span class="n">Cm1</span><span class="p">,</span><span class="n">Cm2</span><span class="p">,</span><span class="n">Cm3</span> <span class="o">=</span> <span class="n">mkCovSTAT</span><span class="p">(</span><span class="n">sigmam</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">corlenm</span><span class="p">,</span><span class="s2">&quot;gaussian&quot;</span><span class="p">)</span>
+
+<span class="c1">## Forward model operator</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nxobs</span><span class="p">,</span><span class="n">nx</span><span class="p">)</span>
+<span class="n">G2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nyobs</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span>
+<span class="n">G3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nzobs</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, a “true/reference” model, in order to compute some synthetic “observed” data and a prior model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Create a reference model</span>
+<span class="n">refmod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="o">*</span><span class="n">nz</span><span class="p">)</span>
+
+<span class="c1">## Create a reference model</span>
+<span class="n">mprior</span> <span class="o">=</span> <span class="n">refmod</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1">#0.5 .* ones(nx*ny*nz)</span>
+
+<span class="c1">## Create some &quot;observed&quot; data</span>
+<span class="c1">##   (without noise because it&#39;s just a test of the algo)</span>
+<span class="n">dobs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">))</span> <span class="o">@</span> <span class="n">refmod</span>
+</pre></div>
+</div>
+<p>Now we have create a synthetic example to play with, which we can solve as shown in the following.</p>
+</div>
+<div class="section" id="solving-the-3d-problem">
+<h4>Solving the 3D problem<a class="headerlink" href="#solving-the-3d-problem" title="Permalink to this headline">¶</a></h4>
+<p>In order to solve the inverse problem using KronLinInv, we first need to compute the “factors” using the function <code class="xref py py-func docutils literal notranslate"><span class="pre">calcfactors()</span></code>, which takes as inputs a set of arrays representing the covariance matrices and the forward operators.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Calculate the required factors</span>
+<span class="n">klifac</span> <span class="o">=</span> <span class="n">kli</span><span class="o">.</span><span class="n">calcfactors</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">Cm1</span><span class="p">,</span><span class="n">Cm2</span><span class="p">,</span><span class="n">Cm3</span><span class="p">,</span><span class="n">Cd1</span><span class="p">,</span><span class="n">Cd2</span><span class="p">,</span><span class="n">Cd3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now the inverse problem can be solved. We first compute the posterior mean and then a subset of the posterior covariance.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## import the module</span>
+<span class="kn">import</span> <span class="nn">kronlininv</span> <span class="k">as</span> <span class="nn">kli</span>
+
+<span class="c1">## Calculate the posterior mean model</span>
+<span class="n">postm</span> <span class="o">=</span> <span class="n">kli</span><span class="o">.</span><span class="n">posteriormean</span><span class="p">(</span><span class="n">klifac</span><span class="p">,</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">mprior</span><span class="p">,</span><span class="n">dobs</span><span class="p">)</span>
+
+<span class="c1">## Calculate the posterior covariance</span>
+<span class="n">npts</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="o">*</span><span class="n">nz</span>
+<span class="n">astart</span><span class="p">,</span> <span class="n">aend</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">npts</span><span class="o">//</span><span class="mi">3</span>
+<span class="n">bstart</span><span class="p">,</span> <span class="n">bend</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">npts</span><span class="o">//</span><span class="mi">3</span>
+<span class="n">postC</span> <span class="o">=</span> <span class="n">kli</span><span class="o">.</span><span class="n">blockpostcov</span><span class="p">(</span><span class="n">klifac</span><span class="p">,</span><span class="n">astart</span><span class="p">,</span><span class="n">aend</span><span class="p">,</span><span class="n">bstart</span><span class="p">,</span><span class="n">bend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="apilist.html" class="btn btn-neutral float-right" title="API, list of functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="kronlininv’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrea Zunino
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

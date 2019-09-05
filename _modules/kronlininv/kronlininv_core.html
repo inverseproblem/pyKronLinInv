@@ -83,8 +83,12 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"></div>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apilist.html">API, list of functions</a></li>
+</ul>
+
             
           
         </div>
@@ -179,7 +183,7 @@
 <span class="c1">##########################################################</span>
 <span class="c1">##########################################################</span>
 
-<div class="viewcode-block" id="calcfactors"><a class="viewcode-back" href="../../index.html#kronlininv.calcfactors">[docs]</a><span class="k">def</span> <span class="nf">calcfactors</span><span class="p">(</span> <span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">Cm1</span><span class="p">,</span><span class="n">Cm2</span><span class="p">,</span><span class="n">Cm3</span><span class="p">,</span><span class="n">Cd1</span><span class="p">,</span><span class="n">Cd2</span><span class="p">,</span><span class="n">Cd3</span> <span class="p">)</span> <span class="p">:</span>     
+<div class="viewcode-block" id="calcfactors"><a class="viewcode-back" href="../../apilist.html#kronlininv.calcfactors">[docs]</a><span class="k">def</span> <span class="nf">calcfactors</span><span class="p">(</span> <span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">Cm1</span><span class="p">,</span><span class="n">Cm2</span><span class="p">,</span><span class="n">Cm3</span><span class="p">,</span><span class="n">Cd1</span><span class="p">,</span><span class="n">Cd2</span><span class="p">,</span><span class="n">Cd3</span> <span class="p">)</span> <span class="p">:</span>     
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     Compute the factors required to solve the inverse problem.</span>
 <span class="sd">     These factors are the ones to be stored to compute the posterior covariance or mean.</span>
@@ -255,7 +259,7 @@
 
 <span class="c1">##########################################################</span>
 
-<div class="viewcode-block" id="posteriormean"><a class="viewcode-back" href="../../index.html#kronlininv.posteriormean">[docs]</a><span class="nd">@jit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#(nopython=True,parallel=True)</span>
+<div class="viewcode-block" id="posteriormean"><a class="viewcode-back" href="../../apilist.html#kronlininv.posteriormean">[docs]</a><span class="nd">@jit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#(nopython=True,parallel=True)</span>
 <span class="k">def</span> <span class="nf">posteriormean</span><span class="p">(</span> <span class="n">factkli</span><span class="p">,</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">,</span><span class="n">G3</span><span class="p">,</span><span class="n">mprior</span><span class="p">,</span><span class="n">dobs</span> <span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the posterior mean model.</span>
@@ -336,7 +340,7 @@
 
 <span class="c1">##########################################################</span>
 
-<div class="viewcode-block" id="blockpostcov"><a class="viewcode-back" href="../../index.html#kronlininv.blockpostcov">[docs]</a><span class="nd">@jit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#(nopython=True,parallel=True)</span>
+<div class="viewcode-block" id="blockpostcov"><a class="viewcode-back" href="../../apilist.html#kronlininv.blockpostcov">[docs]</a><span class="nd">@jit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#(nopython=True,parallel=True)</span>
 <span class="k">def</span> <span class="nf">blockpostcov</span><span class="p">(</span><span class="n">factkli</span><span class="p">,</span> <span class="n">astart</span><span class="p">,</span><span class="n">aend</span><span class="p">,</span><span class="n">bstart</span><span class="p">,</span><span class="n">bend</span> <span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute a block of the posterior covariance defined by the min/max indices astart/aend (rows), bstart/bend (columns).</span>

@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API, list of functions &mdash; KronLinInv 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="User Guide" href="userguide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KronLinInv
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API, list of functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KronLinInv</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API, list of functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/apilist.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kronlininv">
+<span id="api-list-of-functions"></span><h1>API, list of functions<a class="headerlink" href="#module-kronlininv" title="Permalink to this headline">¶</a></h1>
+<dl class="attribute">
+<dt id="kronlininv.blockpostcov">
+<code class="sig-prename descclassname">kronlininv.</code><code class="sig-name descname">blockpostcov</code><a class="reference internal" href="_modules/kronlininv/kronlininv_core.html#blockpostcov"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kronlininv.blockpostcov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a block of the posterior covariance defined by the min/max indices astart/aend (rows), bstart/bend (columns).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factkli</strong> – (named tuple): a set of arrays computed with the function calcfactors()</p></li>
+<li><p><strong>astart</strong><strong>,</strong><strong>aend</strong> (<em>integers</em>) – the first and last row of the posterior covariance to be computed</p></li>
+<li><p><strong>bstart</strong><strong>,</strong><strong>bend</strong> (<em>integers</em>) – the first and last column of the posterior covariance to be computed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a block of the posterior covariance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="kronlininv.calcfactors">
+<code class="sig-prename descclassname">kronlininv.</code><code class="sig-name descname">calcfactors</code><span class="sig-paren">(</span><em class="sig-param">G1</em>, <em class="sig-param">G2</em>, <em class="sig-param">G3</em>, <em class="sig-param">Cm1</em>, <em class="sig-param">Cm2</em>, <em class="sig-param">Cm3</em>, <em class="sig-param">Cd1</em>, <em class="sig-param">Cd2</em>, <em class="sig-param">Cd3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kronlininv/kronlininv_core.html#calcfactors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kronlininv.calcfactors" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Compute the factors required to solve the inverse problem.
+These factors are the ones to be stored to compute the posterior covariance or mean.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G1</strong><strong>,</strong><strong>G2</strong><strong>,</strong><strong>G3</strong> (<em>ndarrays</em>) – the three forward model matrices</p></li>
+<li><p><strong>Cm1</strong><strong>,</strong><strong>Cm2</strong><strong>,</strong><strong>Cm3</strong> (<em>ndarrays</em>) – the three covariance matrices related to the model parameters</p></li>
+<li><p><strong>Cd1</strong><strong>,</strong><strong>Cd2</strong><strong>,</strong><strong>Cd3</strong> (<em>ndarrays</em>) – the three covariance matrices related to the observed data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a set of arrays required to subsequently calculate the posterior mean or covariance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>named tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kronlininv.posteriormean">
+<code class="sig-prename descclassname">kronlininv.</code><code class="sig-name descname">posteriormean</code><a class="reference internal" href="_modules/kronlininv/kronlininv_core.html#posteriormean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kronlininv.posteriormean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the posterior mean model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factkli</strong> (<em>named tuple</em>) – a set of arrays computed with the function calcfactors()</p></li>
+<li><p><strong>G1</strong><strong>,</strong><strong>G2</strong><strong>,</strong><strong>G3</strong> (<em>ndarrays</em>) – the three forward model matrices</p></li>
+<li><p><strong>mprior</strong> (<em>ndarray</em><em>, </em><em>1D</em>) – the prior model</p></li>
+<li><p><strong>dobs</strong> (<em>ndarray</em><em>, </em><em>1D</em>) – the observed data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the posterior mean model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray, 1D</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="userguide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrea Zunino
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
