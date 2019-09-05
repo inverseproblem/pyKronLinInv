@@ -8,17 +8,17 @@ install:
 # command to run tests
 script:
   - pytest
- 
- 
-after_success:
-  - cd docs && make html
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  keep-history: true
-  on:
-    branch: master
-  github-token: $SPHINX_DOCS_token
-  local-dir: docs/build/html
-  committer-from-gh: true
+  
+jobs:
+   include:   
+    deploy:
+      script:
+      - cd docs && make html
+      provider: pages
+      skip-cleanup: true
+      keep-history: true
+      on:
+        branch: master
+      github-token: $SPHINX_DOCS_token
+      local-dir: docs/build/html
+      committer-from-gh: true
