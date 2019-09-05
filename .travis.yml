@@ -19,6 +19,6 @@ deploy:
   keep-history: true
   on:
     branch: master
-  github-token: $GITHUB_TOKEN
+  github-token: $SPHINX_DOCS_token
   local-dir: docs/build/html
   committer-from-gh: true
