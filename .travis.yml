@@ -12,7 +12,8 @@ script:
 jobs:
   include:
     name: Build and deploy docs
-    script: cd docs && make html
+    script: cd docs 
+    script: make html && make html
     deploy:
       provider: pages
       skip-cleanup: true
