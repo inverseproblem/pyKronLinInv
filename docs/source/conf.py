@@ -27,7 +27,7 @@ copyright = '2019, Andrea Zunino'
 author = 'Andrea Zunino'
 
 # The short X.Y version
-version = ''
+version = '0.1'
 # The full version, including alpha/beta/rc tags
 release = '0.1'
 
@@ -111,7 +111,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'KronLinInvdoc'
+htmlhelp_basename = 'KronLinInv_doc'
 
 
 # -- Options for LaTeX output ------------------------------------------------

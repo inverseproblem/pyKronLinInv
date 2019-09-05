@@ -25,12 +25,18 @@ def test2D( ):
     corlenm   = np.array([0.0, 2.5, 2.5])
     
     # run test 
-    result = test_mean_cov(nx,ny,nz,nxobs,nyobs,nzobs,
+    result = calc_mean_cov(nx,ny,nz,nxobs,nyobs,nzobs,
                            sigmaobs,corlenobs,sigmam,corlenm)
 
     return result
 
 
+#########################################
+# 
+# pytest considers all functions starting with test 
+#  to be tests to be run
+#
+#
 #########################################
 
 def test3D( ):
@@ -49,14 +55,14 @@ def test3D( ):
 
     
     # run test 
-    result = test_mean_cov(nx,ny,nz,nxobs,nyobs,nzobs,
+    result = calc_mean_cov(nx,ny,nz,nxobs,nyobs,nzobs,
                            sigmaobs,corlenobs,sigmam,corlenm)
 
     return result
 
 ########################################
 
-def test_mean_cov(nx,ny,nz,nxobs,nyobs,nzobs,sigmaobs,corlenobs,
+def calc_mean_cov(nx,ny,nz,nxobs,nyobs,nzobs,sigmaobs,corlenobs,
                   sigmam,corlenm) :
 
     ##############################

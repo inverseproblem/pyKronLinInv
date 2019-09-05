@@ -108,7 +108,7 @@ def calcfactors( G1,G2,G3,Cm1,Cm2,Cm3,Cd1,Cd2,Cd3 ) :
 ##########################################################
 
 @jit(parallel=True) #(nopython=True,parallel=True)
-def posteriormean(factkli, G1,G2,G3, mprior, dobs ) :
+def posteriormean( factkli,G1,G2,G3,mprior,dobs ) :
     """
     Compute the posterior mean model.
 
@@ -190,7 +190,6 @@ def posteriormean(factkli, G1,G2,G3, mprior, dobs ) :
 
 @jit(parallel=True) #(nopython=True,parallel=True)
 def blockpostcov(factkli, astart,aend,bstart,bend ) :
-
     """
     Compute a block of the posterior covariance defined by the min/max indices astart/aend (rows), bstart/bend (columns).
 
