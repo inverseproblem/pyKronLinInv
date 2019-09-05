@@ -13,7 +13,7 @@ script:
 jobs:
   include:
       name: Deploy to GitHub Pages
-      command: cd docs/ && make html
+      script: make html
       deploy:
          provider: pages # deploy on github pages
          skip_cleanup: true
