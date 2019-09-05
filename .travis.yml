@@ -12,14 +12,12 @@ script:
 jobs:
   include:
     script: cd docs && make html
-    skip-cleanup: true
     deploy:
       provider: pages
       skip-cleanup: true
       keep-history: true
       on:
         branch: master
-        python: 3.7
       github-token: $SPHINX_DOCS_token
       local-dir: docs/build/html
       committer-from-gh: true
